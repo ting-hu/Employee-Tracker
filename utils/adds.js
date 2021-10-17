@@ -13,7 +13,7 @@ addDepartment = (department) => {
     console.log("\n\nAdded department to database.");
     console.log(`Press UP or DOWN to continue...`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 addRole = (title, department, salary) => {
@@ -28,7 +28,7 @@ addRole = (title, department, salary) => {
     console.log(`\n\nRole Added Successfully.`);
     console.log(`Press UP or DOWN to continue...`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 addEmployee = (firstName, lastName, role, manager, department) => {
@@ -42,7 +42,7 @@ addEmployee = (firstName, lastName, role, manager, department) => {
     }
     console.log(`\n\nEmployee Added to Database.`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 addSalaries = () => {
@@ -59,7 +59,7 @@ addSalaries = () => {
       `\n\nTotal utilized budget: $${totalSalaries.replace(/"/g, "")}`
     );
   });
-  promptUser();
+  prompts.promptUser();
 };
 
-module.exports = { addDepartment, addRole, addEmployee, addSalries };
+module.exports = { addDepartment, addRole, addEmployee, addSalaries };

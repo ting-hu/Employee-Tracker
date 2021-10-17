@@ -12,7 +12,7 @@ viewAllDepartments = () => {
     console.table(`\n\nALL DEPARTMENTS`, res);
     console.log(`Press UP or DOWN to continue...`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 viewAllRoles = () => {
@@ -27,7 +27,7 @@ viewAllRoles = () => {
     console.table(`\n\nALL ROLES`, res);
     console.log(`Press UP or DOWN to continue...`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 viewAllEmployees = () => {
@@ -46,7 +46,7 @@ viewAllEmployees = () => {
     console.table("\n\nALL EMPLOYEES", res);
     console.log(`Press UP or DOWN to continue...`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 viewEmployeesByManager = () => {
@@ -61,7 +61,7 @@ viewEmployeesByManager = () => {
     console.table("\n\nEMPLOYEES BY MANAGER", res);
     console.log(`Press UP or DOWN to continue...`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 viewEmployeesByDepartment = () => {
@@ -76,7 +76,7 @@ viewEmployeesByDepartment = () => {
     console.table("\n\nEMPLOYEES BY DEPARTMENT", res);
     console.log(`Press UP or DOWN to continue...`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 module.exports = {

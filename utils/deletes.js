@@ -13,7 +13,7 @@ deleteEmployee = (employee) => {
     console.log(`\n\nEmployee Deleted.`);
     console.log("Press UP or DOWN to continue...");
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 deleteRole = (role) => {
@@ -28,7 +28,7 @@ deleteRole = (role) => {
     console.log(`\n\nRole Deleted.`);
     console.log("Press UP or DOWN to continue...");
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 deleteDepartment = (department) => {
@@ -43,7 +43,7 @@ deleteDepartment = (department) => {
     console.log(`\n\nDepartment Deleted.`);
     console.log("Press UP or DOWN to continue...");
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 module.exports = { deleteEmployee, deleteRole, deleteDepartment };

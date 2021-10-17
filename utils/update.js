@@ -15,7 +15,7 @@ updateEmployeeRole = (employeeId, roleId, deptId) => {
     console.log(`\n\nEmployee Role Updated.`);
     console.log(`Press UP or DOWN to continue...`);
   });
-  promptUser();
+  prompts.promptUser();
 };
 
 module.exports = { updateEmployeeRole };
