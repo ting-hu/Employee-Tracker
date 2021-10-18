@@ -5,7 +5,6 @@ const { departmentChoices } = require("./addRole");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-//sql commands to display the employee table filtered by department
 function showEmpByDep(department) {
   const sql = `SELECT employee.first_name, employee.last_name FROM employee WHERE dept_id = ?`;
   const params = department;

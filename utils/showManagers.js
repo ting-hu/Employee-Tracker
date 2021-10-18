@@ -2,7 +2,6 @@ const db = require("../db/connection");
 const updateManager = require("./updateManager");
 const mysql = require("mysql2");
 
-//show all managers function
 function showAllManagers() {
   const sql = `SELECT * FROM manager`;
 

@@ -5,7 +5,6 @@ const prompts = require("../app");
 const chalk = require("chalk");
 const mysql = require("mysql2");
 
-//get manager array as choices in inquirer prompts that prompt to update manager table or view employees by manager
 function managerChoices() {
   const managers = [];
   return new Promise((resolve, reject) => {
@@ -23,7 +22,6 @@ function managerChoices() {
   });
 }
 
-// takes user input from inquirer prompt to update managers table in db
 function editManagerTable(id, name) {
   const sql = `UPDATE manager SET name = ? WHERE id = ?`;
   const params = [name, id];
@@ -32,12 +30,10 @@ function editManagerTable(id, name) {
       console.log(err);
     }
     console.log(chalk.green("Manager updated!"));
-    // showAllManagers();
     promptUser();
   });
 }
 
-//get user input to update manager table
 updateManager = async () => {
   const managerRes = await inquirer.prompt([
     {

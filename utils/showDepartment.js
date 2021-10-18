@@ -3,7 +3,6 @@ const db = require("../db/connection");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-//show all department information from departments table in db
 function showAllDep() {
   const sql = `SELECT * FROM department`;
 

@@ -4,7 +4,6 @@ const { managerChoices } = require("./updateManager");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-//sql commands to display the employee table filtered by manager
 function showEmpByMan(manager) {
   const sql = `SELECT employee.first_name, employee.last_name FROM employee WHERE manager_id = ?`;
   const params = manager;
@@ -17,7 +16,6 @@ function showEmpByMan(manager) {
   });
 }
 
-//get user input on which manager we will be using to filter out employees
 viewEmpByMan = async () => {
   const userInput = await inquirer.prompt({
     type: "list",

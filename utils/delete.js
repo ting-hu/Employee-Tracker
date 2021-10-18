@@ -13,7 +13,6 @@ const prompts = require("../app");
 const chalk = require("chalk");
 const mysql = require("mysql2");
 
-//delete from the db table departments
 function deleteFromDepTable(depId) {
   const sql = `DELETE FROM department WHERE id = ?`;
   const params = depId;
@@ -22,12 +21,10 @@ function deleteFromDepTable(depId) {
       console.log(err);
     }
     console.log(chalk.green("Department deleted."));
-    // showAllDep();
     promptUser();
   });
 }
 
-//delete from the db table roles
 function deleteFromRolesTable(roleId) {
   const sql = `DELETE FROM roles WHERE id = ?`;
   const params = roleId;
@@ -36,12 +33,10 @@ function deleteFromRolesTable(roleId) {
       console.log(err);
     }
     console.log(chalk.green("Role deleted."));
-    //showAllRoles();
     promptUser();
   });
 }
 
-//delete from the db table employees
 function deleteFromEmployeeTable(employee) {
   const sql = `DELETE FROM employee WHERE id = ?`;
   const params = employee;
@@ -50,12 +45,10 @@ function deleteFromEmployeeTable(employee) {
       console.log(err);
     }
     console.log(chalk.green("Employee deleted."));
-    // showAllEmployees();
     promptUser();
   });
 }
 
-//delete department that takes user input on which param to use in the deleteFromDepTable function
 deleteDepartment = async () => {
   const data = await inquirer.prompt({
     type: "list",
@@ -67,7 +60,6 @@ deleteDepartment = async () => {
   deleteFromDepTable(dep);
 };
 
-//delete role that takes user input on which param to use in the deleteFromRolesTable function
 deleteRole = async () => {
   const data = await inquirer.prompt({
     type: "list",
@@ -79,7 +71,6 @@ deleteRole = async () => {
   deleteFromRolesTable(role);
 };
 
-//delete employee that takes user input on which param to use in the deleteFromEmpTable function
 deleteEmployee = async () => {
   const data = await inquirer.prompt({
     type: "list",

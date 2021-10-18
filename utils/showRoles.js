@@ -2,7 +2,6 @@ const db = require("../db/connection");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-//show all roles function using sql commands
 function showAllRoles() {
   const sql = `SELECT roles.title, roles.id, roles.salary,
 

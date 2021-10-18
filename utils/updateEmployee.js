@@ -7,7 +7,6 @@ const prompts = require("../app");
 const chalk = require("chalk");
 const mysql = require("mysql2");
 
-//get employee array to use as choices in the inquirer function that users need to select an employee
 function employeeChoices() {
   const employees = [];
   return new Promise((resolve, reject) => {
@@ -27,7 +26,6 @@ function employeeChoices() {
   });
 }
 
-//edit employee table in db
 function editEmpTable(id, role, dep) {
   const sql = `UPDATE employee SET role_id = ?, dept_id = ? WHERE id = ?`;
   const params = [role, dep, id];
@@ -37,12 +35,10 @@ function editEmpTable(id, role, dep) {
       return;
     }
     console.log(chalk.green("Employee role updated."));
-    // showAllEmployees();
     promptUser();
   });
 }
 
-//prompt user about employee update to be then used in editEmpTable function
 updateEmployee = async () => {
   const roleUpdateRes = await inquirer.prompt([
     {
