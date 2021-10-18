@@ -31,7 +31,7 @@ function roleChoices() {
 function managerChoices() {
   const managers = [];
   return new Promise((resolve, reject) => {
-    const sql = `SELECT id, manager_name FROM managers`;
+    const sql = `SELECT id, name FROM manager`;
     db.query(sql, (err, res) => {
       if (err) {
         reject(err);
@@ -49,7 +49,7 @@ function managerChoices() {
 
 //update the employees table in the database, taking user input and using it as params
 function addToEmpTable(first, last, role, manager, department) {
-  const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id, dep_id) VALUES (?, ?, ?, ?, ?)`;
+  const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id, dept_id) VALUES (?, ?, ?, ?, ?)`;
   const params = [first, last, role, manager, department];
   db.query(sql, params, (err, result) => {
     if (err) {

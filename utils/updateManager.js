@@ -9,14 +9,14 @@ const mysql = require("mysql2");
 function managerChoices() {
   const managers = [];
   return new Promise((resolve, reject) => {
-    const sql = `SELECT id, manager_name FROM managers `;
+    const sql = `SELECT id, name FROM manager `;
     db.query(sql, (err, res) => {
       if (err) {
         reject(err);
       }
       let responses = JSON.parse(JSON.stringify(res));
       responses.forEach((element) => {
-        managers.push(element.id + ". " + element.manager_name);
+        managers.push(element.id + ". " + element.name);
       });
       resolve(managers);
     });
@@ -25,7 +25,7 @@ function managerChoices() {
 
 // takes user input from inquirer prompt to update managers table in db
 function editManagerTable(id, name) {
-  const sql = `UPDATE managers SET manager_name = ? WHERE id = ?`;
+  const sql = `UPDATE manager SET name = ? WHERE id = ?`;
   const params = [name, id];
   db.query(sql, params, (err, result) => {
     if (err) {

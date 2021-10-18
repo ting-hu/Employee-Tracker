@@ -4,7 +4,7 @@ const mysql = require("mysql2");
 
 //show all managers function
 function showAllManagers() {
-  const sql = `SELECT * FROM managers`;
+  const sql = `SELECT * FROM manager`;
 
   db.query(sql, (err, rows) => {
     if (err) {

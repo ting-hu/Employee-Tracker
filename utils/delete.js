@@ -36,7 +36,7 @@ function deleteFromRolesTable(roleId) {
       console.log(err);
     }
     console.log(chalk.green("Role deleted."));
-    // showAllRoles();
+    //showAllRoles();
     promptUser();
   });
 }

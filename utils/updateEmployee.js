@@ -11,7 +11,7 @@ const mysql = require("mysql2");
 function employeeChoices() {
   const employees = [];
   return new Promise((resolve, reject) => {
-    const sql = `SELECT id, first_name, last_name FROM employees`;
+    const sql = `SELECT id, first_name, last_name FROM employee`;
     db.query(sql, (err, res) => {
       if (err) {
         reject(err);
@@ -29,7 +29,7 @@ function employeeChoices() {
 
 //edit employee table in db
 function editEmpTable(id, role, dep) {
-  const sql = `UPDATE employees SET role_id = ?, dep_id = ? WHERE id = ?`;
+  const sql = `UPDATE employee SET role_id = ?, dept_id = ? WHERE id = ?`;
   const params = [role, dep, id];
   db.query(sql, params, (err, result) => {
     if (err) {

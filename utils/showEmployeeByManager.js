@@ -6,7 +6,7 @@ const mysql = require("mysql2");
 
 //sql commands to display the employee table filtered by manager
 function showEmpByMan(manager) {
-  const sql = `SELECT employees.first_name, employees.last_name FROM employees WHERE manager_id = ?`;
+  const sql = `SELECT employee.first_name, employee.last_name FROM employee WHERE manager_id = ?`;
   const params = manager;
   db.query(sql, params, (err, res) => {
     if (err) {

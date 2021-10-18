@@ -10,14 +10,14 @@ const mysql = require("mysql2");
 function departmentChoices() {
   const departments = [];
   return new Promise((resolve, reject) => {
-    const sql = `SELECT id, dep_name FROM department`;
+    const sql = `SELECT id, name FROM department`;
     db.query(sql, (err, res) => {
       if (err) {
         reject(err);
       }
       let responses = JSON.parse(JSON.stringify(res));
       responses.forEach((element) => {
-        departments.push(element.id + ". " + element.dep_name);
+        departments.push(element.id + ". " + element.name);
       });
       resolve(departments);
     });
