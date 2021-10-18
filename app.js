@@ -21,15 +21,7 @@ const getDepBudget = require("./utils/departmentBudget");
 const db = require("./db/connection");
 
 function init() {
-  console.log(
-    chalk.cyan(` 
-    ███████ ███    ███ ██████  ██       ██████  ██    ██ ███████ ███████     ███    ███  █████  ███    ██  █████   ██████  ███████ ██████  
-    ██      ████  ████ ██   ██ ██      ██    ██  ██  ██  ██      ██          ████  ████ ██   ██ ████   ██ ██   ██ ██       ██      ██   ██ 
-    █████   ██ ████ ██ ██████  ██      ██    ██   ████   █████   █████       ██ ████ ██ ███████ ██ ██  ██ ███████ ██   ███ █████   ██████  
-    ██      ██  ██  ██ ██      ██      ██    ██    ██    ██      ██          ██  ██  ██ ██   ██ ██  ██ ██ ██   ██ ██    ██ ██      ██   ██ 
-    ███████ ██      ██ ██      ███████  ██████     ██    ███████ ███████     ██      ██ ██   ██ ██   ████ ██   ██  ██████  ███████ ██   ██
-    `)
-  );
+  console.log(chalk.cyan(`--------------- Program starts ---------------`));
   promptUser();
 }
 
@@ -102,12 +94,7 @@ module.exports = promptUser = async () => {
       getDepBudget();
       break;
     case "Exit app":
-      console.log(
-        chalk.cyan(`
-            ========================
-            ====Exiting App=========
-            ========================`)
-      );
+      console.log(chalk.cyan(`--------------- Program ends ---------------`));
       db.end();
       break;
   }

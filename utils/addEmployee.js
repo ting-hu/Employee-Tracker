@@ -39,7 +39,7 @@ function managerChoices() {
       //parse the JSON object to work with it
       let responses = JSON.parse(JSON.stringify(res));
       responses.forEach((element) => {
-        managers.push(element.id + ". " + element.manager_name);
+        managers.push(element.id + ". " + element.name);
       });
       //return the new managers array
       resolve(managers);
