@@ -4,7 +4,7 @@ const { managerChoices } = require("./updateManager");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-function showEmpByMan(manager) {
+function showEmployeeByManager(manager) {
   const sql = `SELECT employee.first_name, employee.last_name FROM employee WHERE manager_id = ?`;
   const params = manager;
   db.query(sql, params, (err, res) => {
@@ -16,7 +16,7 @@ function showEmpByMan(manager) {
   });
 }
 
-viewEmpByMan = async () => {
+viewEmployeeByManager = async () => {
   const userInput = await inquirer.prompt({
     type: "list",
     name: "manager",
@@ -24,7 +24,7 @@ viewEmpByMan = async () => {
     choices: await managerChoices(),
   });
   const managerId = userInput.manager.charAt(0);
-  showEmpByMan(managerId);
+  showEmployeeByManager(managerId);
 };
 
-module.exports = viewEmpByMan;
+module.exports = viewEmployeeByManager;

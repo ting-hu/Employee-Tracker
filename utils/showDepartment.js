@@ -3,7 +3,7 @@ const db = require("../db/connection");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-function showAllDep() {
+function showDep() {
   const sql = `SELECT * FROM department`;
 
   db.query(sql, (err, rows) => {
@@ -16,4 +16,4 @@ function showAllDep() {
   });
 }
 
-module.exports = showAllDep;
+module.exports = showDep;

@@ -5,9 +5,9 @@ const chalk = require("chalk");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-function calculateBudget(depId) {
+function calculateBudget(departmentId) {
   const sql = `SELECT SUM(salary) FROM roles WHERE department_id = ?;`;
-  const params = depId;
+  const params = departmentId;
   db.query(sql, params, (err, result) => {
     if (err) {
       console.log(err);
@@ -21,15 +21,15 @@ function calculateBudget(depId) {
   });
 }
 
-getDepBudget = async () => {
-  const resp = await inquirer.prompt({
+showDepartmentBudget = async () => {
+  const response = await inquirer.prompt({
     type: "list",
     name: "depSelected",
     message: "Select the department to view department budget",
     choices: await departmentChoices(),
   });
-  const depId = resp.depSelected.charAt(0);
-  calculateBudget(depId);
+  const departmentId = response.depSelected.charAt(0);
+  calculateBudget(departmentId);
 };
 
-module.exports = getDepBudget;
+module.exports = showDepartmentBudget;

@@ -1,9 +1,8 @@
 const db = require("../db/connection");
 const inquirer = require("inquirer");
-const showAllDep = require("./showDepartment");
-const prompts = require("../app");
 const chalk = require("chalk");
 const mysql = require("mysql2");
+const prompts = require("../app");
 
 function addDepartment() {
   return inquirer

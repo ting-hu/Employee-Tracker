@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const db = require("../db/connection");
-const showAllManagers = require("./showManagers");
 const prompts = require("../app");
 const chalk = require("chalk");
 const mysql = require("mysql2");
@@ -22,9 +21,9 @@ function managerChoices() {
   });
 }
 
-function editManagerTable(id, name) {
+function editManagerTable(manager_id, manager_name) {
   const sql = `UPDATE manager SET name = ? WHERE id = ?`;
-  const params = [name, id];
+  const params = [manager_name, manager_id];
   db.query(sql, params, (err, result) => {
     if (err) {
       console.log(err);
@@ -35,21 +34,21 @@ function editManagerTable(id, name) {
 }
 
 updateManager = async () => {
-  const managerRes = await inquirer.prompt([
+  const managerResponse = await inquirer.prompt([
     {
       type: "list",
-      name: "selectedMan",
+      name: "selectedManager",
       message: "Which manager would you like to update?",
       choices: await managerChoices(),
     },
     {
       type: "input",
-      name: "updatedMan",
+      name: "updatedManager",
       message: "Enter the new managers name: ",
     },
   ]);
-  const manId = managerRes.selectedMan.charAt(0);
-  editManagerTable(manId, managerRes.updatedMan);
+  const managerId = managerResponse.selectedManager.charAt(0);
+  editManagerTable(managerId, managerResponse.updatedManager);
 };
 
 module.exports = { updateManager, managerChoices };

@@ -1,7 +1,6 @@
 const db = require("../db/connection");
 const inquirer = require("inquirer");
 const promise = require("mysql2/promise");
-const showAllRoles = require("./showRoles");
 const prompts = require("../app");
 const chalk = require("chalk");
 const mysql = require("mysql2");

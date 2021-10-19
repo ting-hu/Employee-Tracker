@@ -2,7 +2,7 @@ const db = require("../db/connection");
 const updateManager = require("./updateManager");
 const mysql = require("mysql2");
 
-function showAllManagers() {
+function showManagers() {
   const sql = `SELECT * FROM manager`;
 
   db.query(sql, (err, rows) => {
@@ -14,4 +14,4 @@ function showAllManagers() {
   });
 }
 
-module.exports = showAllManagers;
+module.exports = showManagers;

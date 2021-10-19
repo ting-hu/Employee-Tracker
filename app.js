@@ -1,31 +1,31 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk");
 const mysql = require("mysql2");
-const cTable = require("console.table");
-const showAllDep = require("./utils/showDepartment");
-const showAllRoles = require("./utils/showRoles");
-const showAllEmployees = require("./utils/showEmployees");
+const consoleTable = require("console.table");
+const db = require("./db/connection");
+
+const showDep = require("./utils/showDepartment");
+const showRoles = require("./utils/showRoles");
+const showEmployees = require("./utils/showEmployees");
 const addDepartment = require("./utils/addDepartment");
 const { addRole } = require("./utils/addRole");
 const { addEmployee } = require("./utils/addEmployee");
 const { updateEmployee } = require("./utils/updateEmployee");
 const { updateManager } = require("./utils/updateManager");
-const viewEmpByMan = require("./utils/showEmployeeByManager");
-const viewEmpByDep = require("./utils/showEmpolyeeByDepartment");
+const viewEmployeeByManager = require("./utils/showEmployeeByManager");
+const viewEmployeeByDepartment = require("./utils/showEmpolyeeByDepartment");
 const {
   deleteDepartment,
   deleteRole,
   deleteEmployee,
 } = require("./utils/delete");
-const getDepBudget = require("./utils/departmentBudget");
-const db = require("./db/connection");
+const showDepartmentBudget = require("./utils/departmentBudget");
 
 function init() {
   console.log(chalk.cyan(`--------------- Program starts ---------------`));
   promptUser();
 }
 
-//promptUser function that will be called again after the selected choice functions
 module.exports = promptUser = async () => {
   const data = await inquirer.prompt({
     type: "list",
@@ -52,13 +52,13 @@ module.exports = promptUser = async () => {
 
   switch (data.action) {
     case "View all departments":
-      showAllDep();
+      showDep();
       break;
     case "View all roles":
-      showAllRoles();
+      showRoles();
       break;
     case "View all employees":
-      showAllEmployees();
+      showEmployees();
       break;
     case "Add a department":
       addDepartment();
@@ -76,10 +76,10 @@ module.exports = promptUser = async () => {
       updateManager();
       break;
     case "View employees by manager":
-      viewEmpByMan();
+      viewEmployeeByManager();
       break;
     case "View employees by department":
-      viewEmpByDep();
+      viewEmployeeByDepartment();
       break;
     case "Delete department":
       deleteDepartment();
@@ -91,7 +91,7 @@ module.exports = promptUser = async () => {
       deleteEmployee();
       break;
     case "View department budget":
-      getDepBudget();
+      showDepartmentBudget();
       break;
     case "Exit app":
       console.log(chalk.cyan(`--------------- Program ends ---------------`));

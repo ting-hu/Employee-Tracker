@@ -2,8 +2,8 @@ const db = require("../db/connection");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-function showAllRoles() {
-  const sql = `SELECT roles.title, roles.id, roles.salary,
+function showRoles() {
+  const sql = `SELECT roles.id, roles.title, roles.salary,
 
     department.name AS department
 
@@ -21,4 +21,4 @@ function showAllRoles() {
   });
 }
 
-module.exports = showAllRoles;
+module.exports = showRoles;

@@ -1,11 +1,10 @@
 const db = require("../db/connection");
 const inquirer = require("inquirer");
 const promise = require("mysql2/promise");
-const { departmentChoices } = require("./addRole");
-const showAllEmployees = require("./showEmployees");
-const prompts = require("../app");
 const chalk = require("chalk");
 const mysql = require("mysql2");
+const { departmentChoices } = require("./addRole");
+const prompts = require("../app");
 
 function roleChoices() {
   const roles = [];
@@ -41,56 +40,64 @@ function managerChoices() {
   });
 }
 
-function addToEmpTable(first, last, role, manager, department) {
+function addToEmpolyeeTable(
+  first_name,
+  last_name,
+  role_id,
+  manager_id,
+  department_id
+) {
   const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id, dept_id) VALUES (?, ?, ?, ?, ?)`;
-  const params = [first, last, role, manager, department];
+  const params = [first_name, last_name, role_id, manager_id, department_id];
   db.query(sql, params, (err, result) => {
     if (err) {
       console.log(err);
       return;
     }
-    console.log(chalk.green(first + " " + last + " added to employees table."));
+    console.log(
+      chalk.green(first_name + " " + last_name + " added to employees table.")
+    );
     promptUser();
   });
 }
 
 addEmployee = async () => {
-  const employeeRes = await inquirer.prompt([
+  const employeeResponse = await inquirer.prompt([
     {
       type: "input",
-      name: "empFirst",
+      name: "employeeFirst",
       message: "Enter the first name of the employee to add: ",
     },
     {
       type: "input",
-      name: "empLast",
+      name: "employeeLast",
       message: "Enter the last name of the employee to add: ",
     },
     {
       type: "list",
-      name: "empRole",
+      name: "employeeRole",
       message: "Select the role for this employee.",
       choices: await roleChoices(),
     },
     {
       type: "list",
-      name: "empManager",
+      name: "employeeManager",
       message: "Enter the manager to whom this employee will report to.",
       choices: await managerChoices(),
     },
     {
       type: "list",
-      name: "empDep",
+      name: "employeeDep",
       message: "Which department does this employee work within?",
       choices: await departmentChoices(),
     },
   ]);
-  const roleId = employeeRes.empRole.charAt(0);
-  const managerId = employeeRes.empManager.charAt(0);
-  const depId = employeeRes.empDep.charAt(0);
-  addToEmpTable(
-    employeeRes.empFirst,
-    employeeRes.empLast,
+  const roleId = employeeResponse.employeeRole.charAt(0);
+  const managerId = employeeResponse.employeeManager.charAt(0);
+  const depId = employeeResponse.employeeDep.charAt(0);
+  addToEmpolyeeTable(
+    employeeResponse.employeeFirst,
+    employeeResponse.employeeLast,
     roleId,
     managerId,
     depId

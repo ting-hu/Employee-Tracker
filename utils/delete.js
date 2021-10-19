@@ -1,21 +1,17 @@
 const inquirer = require("inquirer");
 const db = require("../db/connection");
-// const { managerChoices } = require('./updateManager');
 const { departmentChoices } = require("./addRole");
-const showAllDep = require("./showDepartment");
-const showAllRoles = require("./showRoles");
 const { roleChoices } = require("./updateEmployee");
 const { employeeChoices } = require("./updateEmployee");
-//const { employeeChoices } = require("./updateEmployee");
-const showAllEmployees = require("./showEmployees");
+const showEmployees = require("./showEmployees");
 const init = require("../app");
 const prompts = require("../app");
 const chalk = require("chalk");
 const mysql = require("mysql2");
 
-function deleteFromDepTable(depId) {
+function deleteFromDepartmentTable(departmentId) {
   const sql = `DELETE FROM department WHERE id = ?`;
-  const params = depId;
+  const params = departmentId;
   db.query(sql, params, (err, result) => {
     if (err) {
       console.log(err);
@@ -37,9 +33,9 @@ function deleteFromRolesTable(roleId) {
   });
 }
 
-function deleteFromEmployeeTable(employee) {
+function deleteFromEmployeeTable(empl) {
   const sql = `DELETE FROM employee WHERE id = ?`;
-  const params = employee;
+  const params = empl;
   db.query(sql, params, (err, result) => {
     if (err) {
       console.log(err);
@@ -56,8 +52,8 @@ deleteDepartment = async () => {
     message: "Select the department you wish to delete.",
     choices: await departmentChoices(),
   });
-  const dep = data.department.charAt(0);
-  deleteFromDepTable(dep);
+  const dept = data.department.charAt(0);
+  deleteFromDepartmentTable(dept);
 };
 
 deleteRole = async () => {
@@ -74,12 +70,12 @@ deleteRole = async () => {
 deleteEmployee = async () => {
   const data = await inquirer.prompt({
     type: "list",
-    name: "emp",
+    name: "employees",
     message: "Select the employee you wish to delete from the database.",
     choices: await employeeChoices(),
   });
-  const employee = data.emp.charAt(0);
-  deleteFromEmployeeTable(employee);
+  const empl = data.employees.charAt(0);
+  deleteFromEmployeeTable(empl);
 };
 
 module.exports = { deleteDepartment, deleteRole, deleteEmployee };

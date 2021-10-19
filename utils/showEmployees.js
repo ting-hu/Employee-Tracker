@@ -2,7 +2,7 @@ const db = require("../db/connection");
 const prompts = require("../app");
 const mysql = require("mysql2");
 
-showAllEmployees = async () => {
+showEmployees = async () => {
   const sql = `SELECT employee.id, employee.first_name, employee.last_name, 
 
     roles.title AS title,
@@ -31,4 +31,4 @@ showAllEmployees = async () => {
   });
 };
 
-module.exports = showAllEmployees;
+module.exports = showEmployees;
